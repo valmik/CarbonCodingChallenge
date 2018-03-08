@@ -51,14 +51,14 @@ int main(int argc, char** argv) {
   std::thread t1([&w, &r1]{
       while(true) {
         w.moveRobot('A', r1.getMove());
-        std::this_thread::sleep_for(std::chrono::milliseconds(100));
+        std::this_thread::sleep_for(std::chrono::milliseconds(1000));
       }
       });
 
   std::thread t2([&w, &r2]{
       while(true) {
         w.moveRobot('B', r2.getMove());
-        std::this_thread::sleep_for(std::chrono::milliseconds(100));
+        std::this_thread::sleep_for(std::chrono::milliseconds(1000));
       }
       });
 
