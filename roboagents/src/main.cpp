@@ -48,24 +48,34 @@ int main(int argc, char** argv) {
   Robot r2('B');
   w.addRobot(1, 2, 'B');
 
+  Robot r3('C');
+  w.addRobot(5, 5, 'C');
+
   std::thread t1([&w, &r1]{
       while(true) {
-        w.moveRobot('A', r1.getMove());
+        w.moveRobot(r1.getName(), r1.getMove());
         std::this_thread::sleep_for(std::chrono::milliseconds(1000));
       }
       });
 
   std::thread t2([&w, &r2]{
       while(true) {
-        w.moveRobot('B', r2.getMove());
+        w.moveRobot(r2.getName(), r2.getMove());
         std::this_thread::sleep_for(std::chrono::milliseconds(1000));
       }
       });
 
-  // std::thread r2(makeAndMove, 'B', 1, 2, w);
+  std::thread t3([&w, &r3]{
+      while(true) {
+        w.moveRobot(r3.getName(), r3.getMove());
+        std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+      }
+      });
 
   // w.display();
   w.run();
 
   t1.join();
+  t2.join();
+  t3.join();
 }
