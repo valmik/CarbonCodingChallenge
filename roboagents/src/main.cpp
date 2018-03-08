@@ -51,23 +51,24 @@ int main(int argc, char** argv) {
   Robot r3('C');
   w.addRobot(5, 5, 'C');
 
+  // Two ways to move; either move randomly or move according to moveRobot
   std::thread t1([&w, &r1]{
       while(true) {
-        w.moveRobot(r1.getName(), r1.getMove());
+        w.moveRobot(r1.getName(), r1.randomMove());
         std::this_thread::sleep_for(std::chrono::milliseconds(1000));
       }
       });
 
   std::thread t2([&w, &r2]{
       while(true) {
-        w.moveRobot(r2.getName(), r2.getMove());
+        w.moveRobot(r2.getName(), r2.randomMove());
         std::this_thread::sleep_for(std::chrono::milliseconds(1000));
       }
       });
 
   std::thread t3([&w, &r3]{
       while(true) {
-        w.moveRobot(r3.getName(), r3.getMove());
+        r3.moveRobot(w);
         std::this_thread::sleep_for(std::chrono::milliseconds(1000));
       }
       });

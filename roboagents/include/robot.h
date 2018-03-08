@@ -14,12 +14,18 @@ class Robot {
   /**
     Returns a random move
   */
-  char getMove();
+  char randomMove();
 
   /**
     get method
   */
   char getName();
+
+  /**
+    takes in a world and moves the robot
+    Preference is w, a, s, d
+  */
+  void moveRobot(World &world);
 
  private:
   char name_;
