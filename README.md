@@ -1,4 +1,4 @@
 Coding challege for Carbon Robotics, 3/8/2018.
 
-Practiced programming in C++ and learned basic multithreading
+Had fun practicing my C++ and learning basic multithreading
 
